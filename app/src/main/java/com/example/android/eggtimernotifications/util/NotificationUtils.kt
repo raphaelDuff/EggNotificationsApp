@@ -40,9 +40,16 @@ private val FLAGS = 0
 fun NotificationManager.sendNotification(messageBody: String, applicationContext: Context) {
     // Create the content intent for the notification, which launches
     // this activity
-    // TODO: Step 1.11 create intent
+    // Create intent to move to the app when the notification is clicked
+    val contentIntent = Intent(applicationContext, MainActivity::class.java)
 
-    // TODO: Step 1.12 create PendingIntent
+    // Create PendingIntent - the system will use the pending intent to open our app
+    val contentPendingIntent = PendingIntent.getActivity(
+        applicationContext,
+        NOTIFICATION_ID,
+        contentIntent,
+        PendingIntent.FLAG_UPDATE_CURRENT
+    )
 
     // TODO: Step 2.0 add style
 
@@ -62,7 +69,10 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
 
     // TODO: Step 1.3 set title, text and icon to builder
 
-    // TODO: Step 1.13 set content intent
+    // Set content intent
+        .setContentIntent(contentPendingIntent)
+    // AutoCancel dismiss the notification when u click on it
+        .setAutoCancel(true)
 
         // TODO: Step 2.1 add style to builder
 
