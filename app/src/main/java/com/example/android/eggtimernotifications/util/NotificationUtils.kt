@@ -101,7 +101,10 @@ fun NotificationManager.sendNotification(messageBody: String, applicationContext
             snoozePendingIntent
         )
 
-        // TODO: Step 2.5 set priority
+        // Set priority for API level 25 or lower
+        /// To support devices running API level 25 or lower, you must also call setPriority() for
+        /// each notification, using a constant from the NotificationCompat class.
+        .setPriority(NotificationCompat.PRIORITY_HIGH)
 
     // call notify
     //// Since our app will only have one active notification at a given time, you can use the same
