@@ -67,6 +67,10 @@ class EggTimerFragment : Fragment() {
                 channelName,
                 NotificationManager.IMPORTANCE_HIGH
             )
+                // This disable badge. The sign over the app icon that indicates a new action in app
+                .apply {
+                    setShowBadge(false)
+                }
             notificationChannel.enableLights(true)
             notificationChannel.lightColor = Color.RED
             notificationChannel.enableVibration(true)
